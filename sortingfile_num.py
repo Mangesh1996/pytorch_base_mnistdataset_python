@@ -9,7 +9,6 @@ import torch
 from torchnn import ImageClassifier
 import sys
 try:
-
     clf=ImageClassifier().to('cuda')
     opt=Adam(clf.parameters(),lr=1e-3)
     loss_fn=nn.CrossEntropyLoss()
@@ -25,7 +24,7 @@ try:
             key=int(str(torch.argmax(clf(img_tensor))).split(",")[0].split("(")[1])
             number_find.setdefault(key,[]).append(img)
         os.makedirs(os.path.join("sorting",str(key)),exist_ok=True)
-        shutil.copy(file,os.path.join("sorting",str(key)))
+        shutil.copy(img,os.path.join("sorting",str(key)))
 except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
