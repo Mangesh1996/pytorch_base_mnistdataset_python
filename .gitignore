@@ -1,3 +1,4 @@
 data/*
 data_sample/*
 sorting/*
+__pycache__/*
